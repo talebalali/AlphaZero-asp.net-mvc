@@ -1,0 +1,125 @@
+﻿@model Mobile
+@using AlphaZero.Data;
+
+@{ ViewData["Title"] = "Update mobile"; }
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Update mobile</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group text-center">
+                        <img id="ProfilePicturePreview" class="border-info rounded-circle" style="max-width: 150px" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PictureUrl" class="control-label"></label>
+                        <input asp-for="PictureUrl" class="form-control" />
+                        <span asp-validation-for="PictureUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ModelName" class="control-label"></label>
+                        <input asp-for="ModelName" class="form-control" />
+                        <span asp-validation-for="ModelName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="WirelessCarrier" class="control-label"></label>
+                        <input asp-for="WirelessCarrier" class="form-control" />
+                        <span asp-validation-for="WirelessCarrier" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Brand" class="control-label"></label>
+                        <select asp-for="Brand" class="form-control" asp-items="Html.GetEnumSelectList<Brand>()"></select>
+                        <span asp-validation-for="Brand" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FormFactor" class="control-label"></label>
+                        <input asp-for="FormFactor" class="form-control" />
+                        <span asp-validation-for="FormFactor" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RamMemory" class="control-label"></label>
+                        <input asp-for="RamMemory" class="form-control" />
+                        <span asp-validation-for="RamMemory" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OperatingSystem" class="control-label"></label>
+                        <select asp-for="OperatingSystem" class="form-control" asp-items="Html.GetEnumSelectList<OperSystem>()"></select>
+                        <span asp-validation-for="OperatingSystem" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Color" class="control-label"></label>
+                        <input asp-for="Color" class="form-control" />
+                        <span asp-validation-for="Color" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CellularTechnology" class="control-label"></label>
+                        <input asp-for="CellularTechnology" class="form-control" />
+                        <span asp-validation-for="CellularTechnology" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Year" class="control-label"></label>
+                        <input asp-for="Year" class="form-control" />
+                        <span asp-validation-for="Year" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Resolution" class="control-label"></label>
+                        <input asp-for="Resolution" class="form-control" />
+                        <span asp-validation-for="Resolution" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AboutThisItem" class="control-label"></label>
+                        <input asp-for="AboutThisItem" class="form-control" />
+                        <span asp-validation-for="AboutThisItem" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="InternalStorageMemory" class="control-label"></label>
+                        <input asp-for="InternalStorageMemory" class="form-control" />
+                        <span asp-validation-for="InternalStorageMemory" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Bio" class="control-label"></label>
+                        <input asp-for="Bio" class="form-control" />
+                        <span asp-validation-for="Bio" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SIMCardSlotCount" class="control-label"></label>
+                        <select asp-for="SIMCardSlotCount" class="form-control" asp-items="Html.GetEnumSelectList<SIMCardSlotCount>()"></select>
+                        <span asp-validation-for="SIMCardSlotCount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SIMCardSize" class="control-label"></label>
+                        <select asp-for="SIMCardSize" class="form-control" asp-items="Html.GetEnumSelectList<SIMCardSize>()"></select>
+                        <span asp-validation-for="SIMCardSize" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="submit" value="Update" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>$(document).ready(function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $("#PictureUrl").val();
+        })
+        $("#PictureUrl").on("change", function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $(this).val();
+        })</script>
+}

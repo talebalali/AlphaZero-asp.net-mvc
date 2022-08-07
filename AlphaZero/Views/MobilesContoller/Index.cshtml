@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Mobile>
+
+@{ ViewData["Title"] = "List of Mobiles";
+    Layout = "~/Views/Shared/_DarkLayout.cshtml";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+<div class="col-md-4 col-xs-6 border-primary mb-3">
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-12">
+                <div class="card-header text-white bg-info">
+                    <p class="card-text">
+                        <h5 class="card-title">
+                            @item.Brand
+
+                        </h5>
+                        <h5 class="card-title">
+                            @item.ModelName
+                            @*           @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                                {
+                                <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.ID"><i class="bi bi-pencil-square"></i></a>}*@
+                        </h5>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="@item.PictureUrl" width="150" height="225" alt="@item.ModelName">
+            </div>
+            <div class="col-md-6">
+                <div class="card-body">
+                    <p class="card-text">@item.Bio</p>
+
+
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card-footer ">
+                    <p class="card-text">
+                        <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.ID">
+                            <i class="bi bi-eye-fill"></i> Show Details
+                        </a>
+                        <a class="btn btn-success text-white"
+                           asp-controller="Orders"
+                           asp-action="AddItemToShoppingCart"
+                           asp-route-id="@item.ID">
+                            <i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))
+                        </a>
+                        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.ID">
+                            <i class="bi bi-pencil-square"></i>Edit
+                        </a>
+                        <a class="btn btn-outline-primary" asp-action="Delete" asp-route-id="@item.ID">
+                            <i class="bi bi-pencil-square"></i>Delete
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>}
+</div>
+<div style="position: fixed ; right :25px ;bottom : 25px ;" class="text-white">
+    <a asp-controller="MobilesContoller" asp-action="Create" class="btn btn-success">
+        <i class="bi  bi-plus-circle">
+        </i>add item
+
+    </a>
+
+
+</div>
+<div style="position: fixed ; left :25px ;bottom : 25px ;" class="text-white">
+    <a asp-controller="Orders" asp-action="Index" class="btn btn-success">
+        <i class="bi  bi-plus-circle">
+        </i>ShoppingCart
+
+    </a>
+
+
+</div>
+
+
+
+
+
+@*@await Html.PartialAsync("_CreateItem", "Mobiles") *@
